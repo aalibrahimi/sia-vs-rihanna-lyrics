@@ -158,11 +158,12 @@ def write_csv(path, rows, fieldnames):
 
 
 def main():
-  """
-  Calculate the per-song measures from section 3.4 of the project update.
-  
-  Runs after analysis ( analyze.py ). This adds the measures to songs.csv and writes keywords.csv. It reuses the tokenizer and vocable rule from analyze.py without changing that file.
-  """
+    """
+    Calculate the per-song measures from section 3.4 of the project update.
+
+    Runs after analyze.py. Adds the measures to songs.csv and writes keywords.csv.
+    Reuses the tokenizer and vocable rule from analyze.py without changing that file.
+    """
     if not SONGS_CSV.exists():
         sys.exit("songs.csv was not found. Run collect.py and analyze.py first.")
 

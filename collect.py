@@ -8,6 +8,9 @@ from datetime import date
 from pathlib import Path
 
 import lyricsgenius
+from dotenv import load_dotenv
+
+load_dotenv()
 
 SEED = 115
 SONGS_PER_ALBUM = 5
@@ -67,7 +70,6 @@ def connect():
         sleep_time=0.5,
         remove_section_headers=False,
         skip_non_songs=True,
-        verbose=False,
     )
 
 
