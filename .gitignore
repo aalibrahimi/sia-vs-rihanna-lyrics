@@ -1,2 +1,5 @@
 lyrics/
 __pycache__/
+.env
+frontend/node_modules/
+frontend/dist/
