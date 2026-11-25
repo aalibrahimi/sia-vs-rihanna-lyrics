@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SEED = 115
-SONGS_PER_ALBUM = 5
+SONGS_PER_ALBUM = {"Sia": 10, "Rihanna": 5}  # 80 Sia / 40 Rihanna to balance token counts
 TEST_SONG = "diamonds"
 RAW_DIR = Path("lyrics/raw")
 SONGS_CSV = Path("songs.csv")
@@ -169,16 +169,17 @@ def collect_album(genius, rng, artist, album, year):
             continue
         pool.append((song, info, writers))
     rng.shuffle(pool)
+    target = SONGS_PER_ALBUM[artist]
     kept = 0
     for song, info, writers in pool:
-        if kept == SONGS_PER_ALBUM:
+        if kept == target:
             break
         row = collect_song(genius, artist, album, year, song, "train", writers, info)
         if row:
             rows.append(row)
             kept += 1
-    if kept < SONGS_PER_ALBUM:
-        print(f"  only {kept} usable songs on {album}")
+    if kept < target:
+        print(f"  only {kept} of {target} usable songs on {album}")
     return rows
 
 
